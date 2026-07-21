@@ -22,7 +22,7 @@ function App() {
       {/* Header section with text and Clear All button grouped together */}
       <div className="header">
         <div>
-          <h1>Notifications</h1>
+          <h1>Notification Center</h1>
           <p className="notification-count">
             You have {notifications.length} notification
             {notifications.length === 1 ? '' : 's'}
