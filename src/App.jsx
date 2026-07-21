@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import initialNotifications from './notifications';
 import Notification from './Notification';
+import './App.css';
 
 function App() {
   // 1. Initialize state
@@ -17,27 +18,29 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Notifications</h1>
+    <div className="app-container">
+      {/* Header section with text and Clear All button grouped together */}
+      <div className="header">
+        <div>
+          <h1>Notifications</h1>
+          <p className="notification-count">
+            You have {notifications.length} notification
+            {notifications.length === 1 ? '' : 's'}
+          </p>
+        </div>
 
-      {/* Total count of notifications */}
-      <h2>
-        You have {notifications.length} notification
-        {/* Remove "s" if it's only one notification */}
-        {notifications.length === 1 ? '' : 's'}
-      </h2>
-
-      {/* Clear All button */}
-      {notifications.length > 0 && (
-        <button type="button" onClick={handleClearAll}>
-          Clear All
-        </button>
-      )}
+        {/* Clear All button */}
+        {notifications.length > 0 && (
+          <button type="button" className="clear-all-btn" onClick={handleClearAll}>
+            Clear All
+          </button>
+        )}
+      </div>
 
       {/* Render notifications list */}
       <div>
         {notifications.length === 0 ? (
-          <p>No notifications to display.</p>
+          <p className="empty-state">No notifications to display.</p>
         ) : (
           notifications.map((item) => (
             <Notification
